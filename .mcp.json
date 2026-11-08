@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "db-delay-risk": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        ".",
+        "db-delay-risk-mcp"
+      ],
+      "env": {
+        "DB_DELAY_RISK_DB": "${DB_DELAY_RISK_DB:-data/stops.duckdb}"
+      }
+    }
+  }
+}

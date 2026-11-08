@@ -1,0 +1,54 @@
+[project]
+name = "db-delay-risk"
+version = "0.1.0"
+description = "Historical delay and connection risk for Deutsche Bahn trips, as an MCP server and agent skill"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = [
+    "duckdb>=1.5.6",
+    "mcp>=1",
+]
+
+[project.scripts]
+db-delay-risk-mcp = "db_delay_risk.server:main"
+db-delay-risk-build = "db_delay_risk.build:main"
+db-delay-risk-evals = "db_delay_risk.evals.cli:main"
+db-delay-risk-evals-rescore = "db_delay_risk.evals.rescore:main"
+
+[build-system]
+requires = ["uv_build>=0.8.15,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.0",
+    "pyarrow>=26.0.0",
+    "pytest>=9.1.1",
+    "pyyaml>=6.0.3",
+    "ruff>=0.17.0",
+    "types-pyyaml>=6.0.12.20260906",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+strict = true
+files = ["src"]
+
+[[tool.mypy.overrides]]
+module = ["pyarrow", "pyarrow.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "evals/tests"]
+pythonpath = ["tests"]

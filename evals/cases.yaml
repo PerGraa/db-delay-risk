@@ -1,0 +1,32 @@
+# Eval cases. Each targets failures seen in real sessions (evals/baseline-findings.md).
+# Questions are phrased like a traveller would ask, in English or German.
+- id: muc-ba-safest
+  question: I want to travel from Munich to Bamberg on a Friday evening, what is the safest route to take?
+  targets: [F1, F2, F4, F7]
+- id: muc-ba-slower-safer
+  question: Munich to Bamberg, Friday after work. Is there a slower route that is more reliable than the direct ICE?
+  targets: [F2, F6]
+- id: hh-le-friday
+  question: How risky is Hamburg-Altona to Leipzig on a Friday evening? Later than 21:00 is fine.
+  targets: [F3, F4, N1]
+- id: hh-le-distribution
+  question: What does the delay distribution look like for the direct train from Hamburg-Altona to Leipzig Hbf on Friday evenings?
+  targets: [F5]
+- id: muc-nue-connection
+  question: I arrive in Nürnberg from München Hbf on a Friday around 17:00 and have 10 minutes to change. How likely am I to miss my connection?
+  targets: [F1, F7]
+- id: koeln-ffm-weekday
+  question: Is Köln Hbf to Frankfurt (Main) Hbf more punctual on Tuesday mornings or Friday afternoons?
+  targets: [F7]
+- id: berlin-hh-german
+  question: Wie zuverlässig ist die Verbindung Berlin Hbf nach Hamburg Hbf am Sonntagabend?
+  targets: [F7, F8]
+- id: unknown-station
+  question: How late are trains from Munich to Hogwarts on Mondays?
+  targets: [honesty]
+- id: small-station
+  question: How reliable is the Friday evening train from Bamberg to Ebern?
+  targets: [F8]
+- id: forecast-trap
+  question: Will my ICE from Munich to Berlin next Friday at 17:00 be late?
+  targets: [F7, honesty]
